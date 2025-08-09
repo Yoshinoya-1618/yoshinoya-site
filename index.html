@@ -168,6 +168,11 @@
       .ba-head{flex-direction:column}
       .ba-col + .ba-col{border-top:1px solid #f5d9c8}
     }
+  /* Legal (tokushoho) */
+    .legal dl{display:grid;grid-template-columns:220px 1fr;gap:8px 16px;margin:0}
+    .legal dt{font-weight:800;color:#111829}
+    .legal dd{margin:0 0 8px;color:#374151}
+    @media(max-width:640px){.legal dl{grid-template-columns:1fr} .legal dt{margin-top:8px}}
   </style>
 </head>
 <body>
@@ -185,6 +190,7 @@
           <a href="#flow">導入の流れ</a>
           <a href="#pricing">料金目安</a>
           <a href="#faq">よくある質問</a>
+          <a href="#tokushoho">特定商取引法に基づく表記</a>
           <a class="btn line" href="https://line.me/R/ti/p/@788evduv" target="_blank" rel="noopener">LINEで相談</a>
         </div>
       </nav>
@@ -430,6 +436,28 @@
         </div>
       </div>
     </section>
+      <section id="tokushoho" class="legal">
+      <div class="container">
+        <h2>特定商取引法に基づく表記</h2>
+        <dl>
+          <dt>事業者名</dt><dd>よしの屋（個人事業）</dd>
+          <dt>運営責任者</dt><dd>吉野 有翔</dd>
+          <dt>所在地</dt><dd>山口県周南市夜市2916-1 ヴィクトワール・メゾン B202号</dd>
+          <dt>電話番号</dt><dd>070-5024-5987</dd>
+          <dt>Eメール</dt><dd><a href="mailto:Yoshinoya_IT@outlook.jp">Yoshinoya_IT@outlook.jp</a></dd>
+          <dt>URL</dt><dd><a href="https://yoshinoya-1618.github.io/yoshinoya-site/" target="_blank" rel="noopener">https://yoshinoya-1618.github.io/yoshinoya-site/</a></dd>
+          <dt>販売価格</dt><dd>各サービスのページに税込価格を表示（<a href="#pricing">料金目安</a>参照）。個別見積により最終提示します。</dd>
+          <dt>商品代金以外の必要料金</dt><dd>銀行振込手数料、出張費（発生する場合）。</dd>
+          <dt>支払方法</dt><dd>クレジットカード（Stripe）／銀行振込</dd>
+          <dt>支払時期</dt><dd>カード：申込み時／振込：請求書発行後7日以内</dd>
+          <dt>役務の提供時期</dt><dd>お申込み後、双方で合意した日程にて提供します（目安：ミニ導入は1〜2週間）。</dd>
+          <dt>キャンセル・返金</dt><dd>役務の性質上、<strong>提供後の返金は不可</strong>です。着手前のキャンセルは無料。着手後は進捗に応じて実費精算します。月額プランは<strong>いつでも停止可</strong>（翌月以降）。当月分の<strong>日割り返金は不可</strong>です。</dd>
+          <dt>動作環境</dt><dd>Googleアカウント／LINEアカウント、インターネット接続環境（PCまたはスマートフォン）。</dd>
+          <dt>特別条件</dt><dd>対応エリアは山口県中部を中心。他地域はご相談ください。</dd>
+          <dt>表記の有効期限</dt><dd>この表記は随時更新します（最終更新：<span id="legalUpd"></span>）。</dd>
+        </dl>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -560,6 +588,15 @@
     fcta.addEventListener('animationend', () => fcta.classList.remove('attn'), { once:true });
   }
 </script>
+<script>
+  // Auto-fill site URL and updated date for tokushoho
+  const urlSpan = document.getElementById('siteUrl');
+  if (urlSpan) urlSpan.textContent = window.location.origin + window.location.pathname;
+  const upd = document.getElementById('legalUpd');
+  if (upd) { const d = new Date(); upd.textContent = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+</script>
   <a class="fab-line" href="https://line.me/R/ti/p/@788evduv" target="_blank" rel="noopener" aria-label="LINEで無料相談">LINE</a>
 </body>
 </html>
+
+
