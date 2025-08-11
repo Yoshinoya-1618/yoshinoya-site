@@ -9,13 +9,15 @@
   <style>
     :root{--ink:#0e1222;--brand:#e8662f;--muted:#6b7280;--accent:#fff1e8}
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic UI",sans-serif;color:#0e1222;background:#fff8f4;line-height:1.65}
+    html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic UI",sans-serif;color:#0e1222;background:#fff8f4;line-height:1.65;word-break:break-word}
+    img,svg{max-width:100%;height:auto}
     a{color:var(--brand);text-decoration:none}
     .container{max-width:980px;margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;background:rgba(255,249,245,.8);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #f5d9c8;z-index:10}
-    nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+    header{position:sticky;top:0;background:rgba(255,249,245,.8);-webkit-backdrop-filter:saturate(140%) blur(8px);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #f5d9c8;z-index:10}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:56px}
     .brand{font-weight:800}
-    .btn{display:inline-block;padding:10px 16px;border-radius:12px;border:1px solid #e9eefc;background:#fff;color:#0e1222;font-weight:700}
+    .btn{display:inline-block;padding:10px 16px;border-radius:12px;border:1px solid #e9eefc;background:#fff;color:#0e1222;font-weight:700;box-shadow:0 2px 8px rgba(31,41,55,.06)}
     .btn.line{background:#00b900;color:#fff;border-color:#0fa851}
     main section{padding:42px 0;border-top:1px solid #f5d9c8}
     .hero{padding:64px 0 24px;background:linear-gradient(180deg,#fff3ea,transparent)}
@@ -23,11 +25,12 @@
     h2{font-size:22px;margin:0 0 10px}
     .lead{color:#374151}
     .grid{display:grid;gap:14px}
+    /* 初期の宣言は残しつつ、下の“自動フィット”で上書きする */
     .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
     .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
     @media(max-width:900px){.grid.cols-3{grid-template-columns:1fr 1fr}}
     @media(max-width:640px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
-    .card{background:#fff;border:1px solid #e9eefc;border-radius:16px;padding:18px}
+    .card{background:#fff;border:1px solid #e9eefc;border-radius:16px;padding:18px;position:relative}
     .muted{color:#6b7280}
     .list{margin:10px 0 0;padding-left:18px}
     .price{font-weight:800;font-size:22px}
@@ -35,11 +38,24 @@
     .steps{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
     .chip{font-size:12px;background:#fff1e8;border:1px solid #ffd0b3;color:#5a2a00;border-radius:999px;padding:4px 10px;font-weight:700}
     .badge{font-size:11px;display:inline-block;padding:3px 8px;border-radius:999px;background:#ffebdf;color:#6b2f00;border:1px solid #ffcaa6}
-    .popular{position:relative;border-color:#ffd0b3;box-shadow:0 10px 28px rgba(255,138,76,.12)}
+    .popular{border-color:#ffd0b3;box-shadow:0 10px 28px rgba(255,138,76,.12)}
     .popular .tag-pop{position:absolute;top:-10px;right:12px;background:#ffb580;color:#5a2a00;font-weight:800;font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid #ff9f5a}
     footer{padding:32px 0;background:#0b1020;color:#c7d0ff;margin-top:32px}
     footer a{color:#dbe5ff}
     code{background:#fff1e8;padding:0 4px;border-radius:4px}
+
+    /* ▼ モバイル崩れ対策 */
+    /* 1) ナビゲーションを縦積みに */
+    @media(max-width:560px){
+      nav{flex-direction:column;align-items:stretch;gap:8px}
+      nav .btn{width:100%;text-align:center}
+    }
+    /* 2) グリッドをauto-fitで柔軟に */
+    @media(max-width:1200px){
+      .grid.cols-3,.grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    }
+    /* 3) カード内の長い要素のはみ出し防止 */
+    .card h3,.card p,.card li{overflow-wrap:anywhere}
   </style>
 </head>
 <body>
@@ -47,7 +63,7 @@
     <div class="container">
       <nav>
         <div class="brand">よしの屋｜まちの段取り屋</div>
-        <div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
           <a class="btn" href="./index.html">← トップへ戻る</a>
           <a class="btn line" href="https://line.me/R/ti/p/@788evduv" target="_blank" rel="noopener">LINEで相談</a>
         </div>
