@@ -133,8 +133,9 @@
     @media(max-width:900px){.ba .grid{grid-template-columns:1fr 1fr}}
     @media(max-width:640px){.ba .grid{grid-template-columns:1fr}}
     .ba-card{background:#fff;border:1px solid #f5d9c8;border-radius:16px;overflow:hidden}
-    .ba-head{display:flex}
-    .ba-col{flex:1;padding:14px}
+    /* ▼▼ 修正: フレックス→グリッドで安定配置に */
+    .ba-head{display:grid;grid-template-columns:1fr 1fr}
+    .ba-col{flex:1;padding:14px;min-width:0}
     .ba-col.before{background:#fff1f0}
     .ba-col.after{background:#effaf0}
     .ba-tag{font-size:11px;font-weight:800;display:inline-block;padding:3px 8px;border-radius:999px;border:1px solid}
@@ -163,9 +164,9 @@
     .promises li{margin:8px 0}
     .promises strong{display:block}
     .sign{margin-top:8px;font-size:13px;color:#6b7280}
-  /* BA mobile stacking */
-    @media(max-width:600px){
-      .ba-head{flex-direction:column}
+  /* ▼▼ 修正: モバイルでの積み上げ表示 */
+    @media(max-width:720px){
+      .ba-head{grid-template-columns:1fr}
       .ba-col + .ba-col{border-top:1px solid #f5d9c8}
     }
   /* Legal (tokushoho) */
@@ -248,20 +249,20 @@
         <div class="grid cols-3">
           <div class="ba-card">
             <div class="ba-head">
-              <div class="ba-col before"><span class="ba-tag">Before</span><h4>手入力の見積</h4><p>転記・計算ミスが発生／毎回30分</p></div>
-              <div class="ba-col after"><span class="ba-tag">After</span><h4>自動計算テンプレ</h4><p>入力だけで数分・ミス削減</p></div>
+              <div class="ba-col before"><span class="ba-tag">Before</span><h4>受付が電話中心・個人LINE混在</h4><p>取りこぼし・履歴が追えない</p></div>
+              <div class="ba-col after"><span class="ba-tag">After</span><h4>公式LINEに一本化</h4><p>あいさつ/キーワード自動返信で24h初期対応</p></div>
             </div>
           </div>
           <div class="ba-card">
             <div class="ba-head">
-              <div class="ba-col before"><span class="ba-tag">Before</span><h4>電話だけの受付</h4><p>営業時間外に取りこぼし</p></div>
-              <div class="ba-col after"><span class="ba-tag">After</span><h4>LINEで自動応答</h4><p>24h受付＆初期案内を自動化</p></div>
+              <div class="ba-col before"><span class="ba-tag">Before</span><h4>予約案内が分かりにくい</h4><p>「空きは?」に都度返信・ミス</p></div>
+              <div class="ba-col after"><span class="ba-tag">After</span><h4>予約導線を整備</h4><p>リッチメニュー/ミニLP→予約・カレンダー連携</p></div>
             </div>
           </div>
           <div class="ba-card">
             <div class="ba-head">
-              <div class="ba-col before"><span class="ba-tag">Before</span><h4>情報がバラバラ</h4><p>紙・個人LINE・口頭で散逸</p></div>
-              <div class="ba-col after"><span class="ba-tag">After</span><h4>1枚シートに集約</h4><p>検索・共有・集計がラクに</p></div>
+              <div class="ba-col before"><span class="ba-tag">Before</span><h4>AI活用が“試して終わり”</h4><p>使い方が属人化・効果が見えない</p></div>
+              <div class="ba-col after"><span class="ba-tag">After</span><h4>週1の現地伴走で定着</h4><p>テンプレ/運用ルール整備・小さな改善を継続</p></div>
             </div>
           </div>
         </div>
@@ -271,7 +272,7 @@
     <section id="services">
       <div class="container">
         <h2>サービス</h2>
-        <div class="grid cols-3">
+        <div class="grid cols-2">
           <div class="card">
             <h3>AI導入ミニ相談（初回0円）</h3>
             <p class="muted">現状をヒアリングして、最短で効く小さな改善案をその場で提案します。</p>
@@ -280,23 +281,14 @@
               <li>改善の優先順位づけ</li>
               <li>“まず一手”の具体策を提示</li>
             </ul>
-          </div>
-          <div class="card">
-            <h3>定型業務の自動化</h3>
-            <p class="muted">Googleフォーム／スプレッドシート／ドキュメントを使って、集計・転記・書類作成を自動に。</p>
+          </div><div class="card">
+            <h3>LINE公式アカウントの構築代行</h3>
+            <p class="muted">小規模事業・個人店〜中小企業様向けに、初期設計から導線・自動応答まで整備を代行します。</p>
             <ul class="list">
-              <li>日報・見積・請求の自動作成</li>
-              <li>PDF化・メール送付まで</li>
-              <li>LINE連携の自動返信</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>現場に合わせた“ミニ導入”</h3>
-            <p class="muted">大掛かりなシステム導入ではなく、1〜2週間で効果を出す小さな導入から。</p>
-            <ul class="list">
-              <li>業務テンプレ設計</li>
-              <li>操作マニュアル・短時間レクチャー</li>
-              <li>必要なら訪問サポート</li>
+              <li>友だち追加導線／プロフィール最適化</li>
+              <li>あいさつメッセージ・キーワード自動返信</li>
+              <li>予約・問い合わせフォーム連携（必要に応じて）</li>
+              <li><a href="Line-official.html">くわしく見る →</a></li>
             </ul>
           </div>
           <div class="card popular">
@@ -307,7 +299,7 @@
               <li>現地MTG＋作業（週1回／半日）</li>
               <li>運用チェック・バックログ管理</li>
               <li>軽微なドキュメント／テンプレ整備</li>
-              <li><a href="Onsite.html">くわしく見る →</a></li>
+              <li><a href="onsite.html">くわしく見る →</a></li>
             </ul>
           </div>
         </div>
@@ -320,8 +312,8 @@
         <div class="grid cols-4" style="gap:14px">
           <div class="card"><strong>① LINEで相談</strong><p class="muted">困りごとをメッセージで送ってください。写真OK。</p></div>
           <div class="card"><strong>② 無料ヒアリング</strong><p class="muted">オンラインまたは訪問で30〜45分。</p></div>
-          <div class="card"><strong>③ お試し 9,800円</strong><p class="muted">まずは小さな一手を一緒に形にします。</p></div>
-          <div class="card"><strong>④ ミニ導入</strong><p class="muted">運用開始→必要に応じて微調整。継続契約は任意。</p></div>
+          <div class="card"><strong>③ 初期改善の試作</strong><p class="muted">現場に合わせた小さな仕組みを一緒に形にします。</p></div>
+          <div class="card"><strong>④ 運用開始・微調整</strong><p class="muted">実運用→必要に応じて微調整。継続契約は任意。</p></div>
           </div>
       </div>
     </section>
@@ -329,21 +321,15 @@
     <section id="pricing">
       <div class="container">
         <h2>料金目安</h2>
-        <div class="grid cols-3">
+        <div class="grid cols-2">
           <div class="card">
             <h3>初回相談</h3>
             <p class="price">0円</p>
             <p class="muted">LINEチャット／オンライン・訪問（近隣）に対応</p>
-          </div>
-          <div class="card">
-            <h3>お試しサポート</h3>
-            <p class="price">9,800円</p>
-            <p class="muted">小タスク1件（例：見積テンプレ作成、LINE自動返信の雛形 など）</p>
-          </div>
-          <div class="card">
-            <h3>ミニ導入（1〜2週間）</h3>
-            <p class="price">29,800円〜</p>
-            <p class="muted">1テーマ限定／設計→初期導入→簡易レクチャー（目安2〜3時間）・軽微な修正1回込み</p>
+          </div><div class="card">
+            <h3>LINE公式アカウントの構築代行</h3>
+            <p class="price">19,800円〜</p>
+            <p class="muted">初期設計から友だち導線・自動応答・予約まで、“使える”状態を短期構築。</p>
           </div>
           <div class="card">
             <h3>定期訪問AI顧問（月４回）</h3>
@@ -598,6 +584,8 @@
   <a class="fab-line" href="https://line.me/R/ti/p/@788evduv" target="_blank" rel="noopener" aria-label="LINEで無料相談">LINE</a>
 </body>
 </html>
+
+
 
 
 
